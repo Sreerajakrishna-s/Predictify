@@ -1,0 +1,35 @@
+<div class="container">
+  <nav class="navbar">
+    <span class="navbar-brand">PREDICTIFY</span>
+  </nav>
+  <div class="weather-panel">
+    <h5 class="current-time">{{ greeting }}, {{ currentTime | date: 'hh:mm:ss a' }}</h5>
+    <div class="container my-3">
+      <div class="row">
+        <div class="custom-col">
+          <h1>Welcome to Predictify</h1>
+          <p>Get real-time weather information for your city.</p>
+          <button class="btn btn-primary" (click)="openForm()" *ngIf="blankPanel">Get Weather</button>
+          <app-weather-panel *ngIf="!blankPanel"></app-weather-panel>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="suggestions">
+    <h1>Have a nice day!</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4" *ngFor="let suggestion of suggestions">
+          <div class="suggestion-item">
+            <img [src]="suggestion.image" [alt]="suggestion.alt">
+            <h3>{{ suggestion.title }}</h3>
+            <p>{{ suggestion.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="chat-bubble">
+    <div class="chat-message">{{ randomWeatherQuote }}</div>
+  </div>
+</div>
